@@ -25,11 +25,31 @@ namespace lmr
 		private event RTCBDelegate _lateUpdate;
 		private event RTCBDelegate _onGUI;
 		private event RTCBDelegate _onDrawGizmos;
-		public static event RTCBDelegate update { get { return instance._update; } }
-		public static event RTCBDelegate fixedUpdate { get { return instance._fixedUpdate; } }
-		public static event RTCBDelegate lateUpdate { get { return instance.lateUpdate; } }
-		public static event RTCBDelegate onGUI { get { return instance.onGUI; } }
-		public static event RTCBDelegate onDrawGizmos { get { return instance.onDrawGizmos; } }
+		public static event RTCBDelegate update
+		{
+			add { instance._update += value; }
+			remove { instance._update -= value; }
+		}
+		public static event RTCBDelegate fixedUpdate
+		{
+			add { instance._fixedUpdate += value; }
+			remove { instance._fixedUpdate -= value; }
+		}
+		public static event RTCBDelegate lateUpdate
+		{
+			add { instance._lateUpdate += value; }
+			remove { instance._lateUpdate -= value; }
+		}
+		public static event RTCBDelegate onGUI
+		{
+			add { instance._onGUI += value; }
+			remove { instance._onGUI -= value; }
+		}
+		public static event RTCBDelegate onDrawGizmos
+		{
+			add { instance._onDrawGizmos += value; }
+			remove { instance._onDrawGizmos -= value; }
+		}
 
 		private void Awake()
 		{
