@@ -8,7 +8,7 @@ namespace lmr
 	public class RTCBProvider : MonoBehaviour
 	{
 		static private RTCBProvider _instance;
-		static public RTCBProvider inst
+		static public RTCBProvider instance
 		{
 			get
 			{
