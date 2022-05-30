@@ -64,10 +64,10 @@ namespace lmr
 				Destroy(this.gameObject);
 			}
 		}
-		private void Update() { update?.Invoke(); }
-		private void FixedUpdate() { fixedUpdate?.Invoke(); }
-		private void LateUpdate() { lateUpdate?.Invoke(); }
-		private void OnGUI() { onGUI?.Invoke(); }
-		private void OnDrawGizmos() { onDrawGizmos?.Invoke(); }
+		private void Update() { _update?.Invoke(); }
+		private void FixedUpdate() { _fixedUpdate?.Invoke(); }
+		private void LateUpdate() { _lateUpdate?.Invoke(); }
+		private void OnGUI() { _onGUI?.Invoke(); }
+		private void OnDrawGizmos() { _onDrawGizmos?.Invoke(); }
 	}
 }
