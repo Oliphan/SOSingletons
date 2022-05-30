@@ -21,10 +21,15 @@ namespace lmr
 		}
 		public delegate void RTCBDelegate();
 		public event RTCBDelegate update;
+		public static event RTCBDelegate update { get { return instance.update; } }
 		public event RTCBDelegate fixedUpdate;
+		public static event RTCBDelegate fixedUpdate { get { return instance.fixedUpdate; } }
 		public event RTCBDelegate lateUpdate;
+		public static event RTCBDelegate lateUpdate { get { return instance.lateUpdate; } }
 		public event RTCBDelegate onGUI;
+		public static event RTCBDelegate onGUI { get { return instance.onGUI; } }
 		public event RTCBDelegate onDrawGizmos;
+		public static event RTCBDelegate onDrawGizmos { get { return instance.onDrawGizmos; } }
 
 		private void Awake()
 		{
