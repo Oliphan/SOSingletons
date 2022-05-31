@@ -6,7 +6,7 @@ namespace lmr
 {
 	public class SOSingleton<T> : SOSingletonBase where T : SOSingleton<T>
 	{
-		protected static T mInstance;
+		protected static T m_Instance;
 		public static T instance
 		{
 			get
