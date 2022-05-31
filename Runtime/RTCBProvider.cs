@@ -4,7 +4,9 @@ namespace lmr
 {
 	/// <summary>
 	/// A MonoBehaviour singleton class to provide callbacks for Unity runtime events such as Update, FixedUpdate, etc.
+	/// Set to execute before the default execution order of 0, so that "manager" classes can subscribe to be updated before other scripts.
 	/// </summary>
+	[DefaultExecutionOrder(-100)]
 	public class RTCBProvider : MonoBehaviour
 	{
 		static private RTCBProvider m_Instance;
