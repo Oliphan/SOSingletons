@@ -11,12 +11,12 @@ namespace lmr
 		{
 			get
 			{
-				if (mInstance == null)
+				if (m_Instance == null)
 				{
-					mInstance = Resources.Load<T>("Singletons/" + typeof(T).Name);
-					mInstance.init();
+					m_Instance = Resources.Load<T>("Singletons/" + typeof(T).Name);
+					m_Instance.init();
 				}
-				return mInstance;
+				return m_Instance;
 			}
 		}
 		protected virtual void init() { }
