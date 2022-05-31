@@ -7,67 +7,67 @@ namespace lmr
 	/// </summary>
 	public class RTCBProvider : MonoBehaviour
 	{
-		static private RTCBProvider _instance;
+		static private RTCBProvider mInstance;
 		static public RTCBProvider instance
 		{
 			get
 			{
-				if (!_instance)
+				if (!mInstance)
 				{
 					new GameObject("Runtime Callback Provider").AddComponent<RTCBProvider>();
 				}
-				return _instance;
+				return mInstance;
 			}
 		}
 		public delegate void RTCBDelegate();
-		private event RTCBDelegate _update;
-		private event RTCBDelegate _fixedUpdate;
-		private event RTCBDelegate _lateUpdate;
-		private event RTCBDelegate _onGUI;
-		private event RTCBDelegate _onDrawGizmos;
+		private event RTCBDelegate mUpdate;
+		private event RTCBDelegate mFixedUpdate;
+		private event RTCBDelegate mLateUpdate;
+		private event RTCBDelegate mOnGUI;
+		private event RTCBDelegate mOnDrawGizmos;
 		public static event RTCBDelegate update
 		{
-			add { instance._update += value; }
-			remove { instance._update -= value; }
+			add { instance.mUpdate += value; }
+			remove { instance.mUpdate -= value; }
 		}
 		public static event RTCBDelegate fixedUpdate
 		{
-			add { instance._fixedUpdate += value; }
-			remove { instance._fixedUpdate -= value; }
+			add { instance.mFixedUpdate += value; }
+			remove { instance.mFixedUpdate -= value; }
 		}
 		public static event RTCBDelegate lateUpdate
 		{
-			add { instance._lateUpdate += value; }
-			remove { instance._lateUpdate -= value; }
+			add { instance.mLateUpdate += value; }
+			remove { instance.mLateUpdate -= value; }
 		}
 		public static event RTCBDelegate onGUI
 		{
-			add { instance._onGUI += value; }
-			remove { instance._onGUI -= value; }
+			add { instance.mOnGUI += value; }
+			remove { instance.mOnGUI -= value; }
 		}
 		public static event RTCBDelegate onDrawGizmos
 		{
-			add { instance._onDrawGizmos += value; }
-			remove { instance._onDrawGizmos -= value; }
+			add { instance.mOnDrawGizmos += value; }
+			remove { instance.mOnDrawGizmos -= value; }
 		}
 
 		private void Awake()
 		{
-			if (null == _instance)
+			if (null == mInstance)
 			{
-				_instance = this;
+				mInstance = this;
 				DontDestroyOnLoad(this.gameObject);
 			}
-			else if (_instance != this)
+			else if (mInstance != this)
 			{
 				Debug.LogError("RTCBProvider has been instantiated twice! Destroying secondary instance. Please do not instantiate a RTCBProvider manually. One will be instantiated automatically when needed.");
 				Destroy(this.gameObject);
 			}
 		}
-		private void Update() { _update?.Invoke(); }
-		private void FixedUpdate() { _fixedUpdate?.Invoke(); }
-		private void LateUpdate() { _lateUpdate?.Invoke(); }
-		private void OnGUI() { _onGUI?.Invoke(); }
-		private void OnDrawGizmos() { _onDrawGizmos?.Invoke(); }
+		private void Update() { mUpdate?.Invoke(); }
+		private void FixedUpdate() { mFixedUpdate?.Invoke(); }
+		private void LateUpdate() { mLateUpdate?.Invoke(); }
+		private void OnGUI() { mOnGUI?.Invoke(); }
+		private void OnDrawGizmos() { mOnDrawGizmos?.Invoke(); }
 	}
 }

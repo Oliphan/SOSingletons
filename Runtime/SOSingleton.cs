@@ -6,17 +6,17 @@ namespace lmr
 {
 	public class SOSingleton<T> : SOSingletonBase where T : SOSingleton<T>
 	{
-		protected static T _instance;
+		protected static T mInstance;
 		public static T instance
 		{
 			get
 			{
-				if (_instance == null)
+				if (mInstance == null)
 				{
-					_instance = Resources.Load<T>("Singletons/" + typeof(T).Name);
-					_instance.init();
+					mInstance = Resources.Load<T>("Singletons/" + typeof(T).Name);
+					mInstance.init();
 				}
-				return _instance;
+				return mInstance;
 			}
 		}
 		protected virtual void init() { }
